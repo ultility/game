@@ -16,4 +16,5 @@ class LTexture {
         SDL_Texture* texture;
         int width;
         int height;
+        SDL_Renderer renderer;
 };

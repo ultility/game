@@ -56,12 +56,40 @@ void Player::move(double dx, double dy) {
         x += dx;
         y -= dy;
         current_animation++;
-        current_animation %= 2;
         if (dx < 0) {
             look_direction = LEFT;
         }
         else if (dx > 0){
             look_direction = RIGHT;
         }
+        else {
+            current_animation--;
+        }
+        current_animation %= 2;
     }
+}
+
+bool Player::is_touching(double left, double top, double right, double bottom) {
+    double player_left = x;
+    double player_right = x + texture->get_width() / ANIMATION_TOTAL;
+    double player_top = y;
+    double player_bottom = y + texture->get_height();
+    std::cout << "player:" << player_left << " " << player_right << " " << player_top << " " << player_bottom << std::endl;
+    std::cout << "object:" << left << " " << right << " " << top << " " << bottom << std::endl;
+    if (player_left == right + 1 || player_left == right || player_right == left || player_right + 1 == left) {
+        std::cout << "1" << std::endl;
+        if ((player_bottom <= bottom && player_bottom >= top) || (player_top >= top || player_top <= bottom)) {
+            std::cout << "2" << std::endl;
+            return true;
+        }
+    }
+    if (player_top == bottom + 1 || player_top == bottom || player_bottom == top || player_bottom + 1 == top) {
+        std::cout << "3" << std::endl;
+        if ((player_right <= right && player_right >= left) || (player_left >= left || player_left <= right))
+        {
+            std::cout << "4" << std::endl;
+            return true;
+        }
+    }
+    return false;
 }

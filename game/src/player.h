@@ -18,6 +18,8 @@ class Player{
         int get_height();
         bool set_coordinates(double x, double y);
         void move(double dx, double dy);
+        bool is_touching(double left, double top, double right, double bottom);
+        bool is_touching(SDL_Rect* area);
     private:
         int look_direction;
         int current_animation;

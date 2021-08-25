@@ -34,7 +34,7 @@ bool LTexture::load_texture(std::string path, SDL_Renderer* renderer, Uint8 r, U
         else {
             width = surface->w;
             height = surface->h;
-            
+            (*this).renderer = renderer;
         }
 
         SDL_FreeSurface(surface);
@@ -60,7 +60,7 @@ bool LTexture::load_texture(std::string path, SDL_Renderer* renderer) {
         else {
             width = surface->w;
             height = surface->h;
-            
+            (*this).renderer = renderer;
         }
 
         SDL_FreeSurface(surface);
@@ -85,7 +85,7 @@ int LTexture::get_height() {
     return height;
 }
 
-void LTexture::render(SDL_Renderer* renderer, int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip) {
+void LTexture::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip) {
     SDL_Rect render_area = {x, y, width, height};
     //Set clip rendering dimensions
     if( clip != NULL )

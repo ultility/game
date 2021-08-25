@@ -9,6 +9,9 @@ using std::endl;
 
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
+const int FRAMES_PER_JUMP = 8;
+const int JUMP_HEIGHT = 20;
+const int PARTIAL_JUMP_HEIGHT = 5; 
 
 SDL_Window* window = NULL;
 
@@ -16,6 +19,10 @@ SDL_Renderer* renderer = NULL;
 
 int main() {
     if (init()) {
+        int dy = 0;
+        int partial_jumps = 0;
+        int frame_counter = 0;
+        int jump_frame_start = 0;
         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC);
         if (renderer == NULL) {
             cout << "failed to create renderer, error:" << SDL_GetError() << endl;
@@ -39,9 +46,27 @@ int main() {
                     case SDLK_a:
                         p.move(-p.get_width(), 0);
                         break;
+                    case SDLK_w:
+                        if (p.is_touching(0,SCREEN_HEIGHT,SCREEN_WIDTH, SCREEN_HEIGHT)) {
+                            dy = (JUMP_HEIGHT / PARTIAL_JUMP_HEIGHT);
+                            jump_frame_start = frame_counter % (FRAMES_PER_JUMP / (JUMP_HEIGHT / PARTIAL_JUMP_HEIGHT));
+                        }
+                        cout << "w was pressed" << endl;
                     default:
                         break;
                     }
+                }
+            }
+            if (dy != 0 && frame_counter % (FRAMES_PER_JUMP / (JUMP_HEIGHT / PARTIAL_JUMP_HEIGHT)) == jump_frame_start) {
+                cout << "jump" << dy << endl;
+                p.move(0,dy);
+                partial_jumps++;
+                if (partial_jumps == JUMP_HEIGHT / PARTIAL_JUMP_HEIGHT) {
+                    dy = -dy;
+                }
+                else if (partial_jumps == JUMP_HEIGHT / PARTIAL_JUMP_HEIGHT * 2) {
+                    dy = 0;
+                    partial_jumps = 0;
                 }
             }
             SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -50,6 +75,7 @@ int main() {
             
             SDL_RenderPresent(renderer);
             SDL_ShowWindow(window);   
+            frame_counter++;
         }
         }
     }
