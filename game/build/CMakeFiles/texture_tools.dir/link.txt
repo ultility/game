@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../lib/libtexture_tools.a  CMakeFiles/texture_tools.dir/src/LTexture.cpp.o
+/usr/bin/ranlib ../lib/libtexture_tools.a
