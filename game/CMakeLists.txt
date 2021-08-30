@@ -17,12 +17,14 @@ add_library(player src/player.cpp)
 add_library(texture_tools src/LTexture.cpp)
 
 
-find_package(SDL2 REQUIRED)
-find_package(SDL2_image REQUIRED)
-find_package(SDL2_ttf REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
+find_package(SDL2 CONFIG REQUIRED)
+find_package(sdl2-image CONFIG REQUIRED)
+find_package(sdl2-mixer CONFIG REQUIRED)
+find_package(sdl2-ttf CONFIG REQUIRED)
+
+
 target_link_libraries(player texture_tools)
-target_link_libraries(main ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} player texture_tools)
+target_link_libraries(main PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2::SDL2-static SDL2::SDL2_image main PRIVATE SDL2::SDL2_mixer main PRIVATE SDL2::SDL2_ttf player texture_tools)
 
 
 

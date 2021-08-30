@@ -237,54 +237,6 @@ COVERAGE_COMMAND:FILEPATH=/usr/bin/gcov
 //Extra command line flags to pass to the coverage tool
 COVERAGE_EXTRA_FLAGS:STRING=-l
 
-//Enable to build Debian packages
-CPACK_BINARY_DEB:BOOL=OFF
-
-//Enable to build FreeBSD packages
-CPACK_BINARY_FREEBSD:BOOL=OFF
-
-//Enable to build IFW packages
-CPACK_BINARY_IFW:BOOL=OFF
-
-//Enable to build NSIS packages
-CPACK_BINARY_NSIS:BOOL=OFF
-
-//Enable to build RPM packages
-CPACK_BINARY_RPM:BOOL=OFF
-
-//Enable to build STGZ packages
-CPACK_BINARY_STGZ:BOOL=ON
-
-//Enable to build TBZ2 packages
-CPACK_BINARY_TBZ2:BOOL=OFF
-
-//Enable to build TGZ packages
-CPACK_BINARY_TGZ:BOOL=ON
-
-//Enable to build TXZ packages
-CPACK_BINARY_TXZ:BOOL=OFF
-
-//Enable to build TZ packages
-CPACK_BINARY_TZ:BOOL=ON
-
-//Enable to build RPM source packages
-CPACK_SOURCE_RPM:BOOL=OFF
-
-//Enable to build TBZ2 source packages
-CPACK_SOURCE_TBZ2:BOOL=ON
-
-//Enable to build TGZ source packages
-CPACK_SOURCE_TGZ:BOOL=ON
-
-//Enable to build TXZ source packages
-CPACK_SOURCE_TXZ:BOOL=ON
-
-//Enable to build TZ source packages
-CPACK_SOURCE_TZ:BOOL=ON
-
-//Enable to build ZIP source packages
-CPACK_SOURCE_ZIP:BOOL=OFF
-
 //How many times to retry timed-out CTest submissions.
 CTEST_SUBMIT_RETRY_COUNT:STRING=3
 
@@ -318,39 +270,6 @@ MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
 //Path to a program.
 P4COMMAND:FILEPATH=P4COMMAND-NOTFOUND
 
-//Where the SDL2main library can be found
-SDL2MAIN_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libSDL2main.a
-
-//Path to a file.
-SDL2_IMAGE_INCLUDE_DIR:PATH=/usr/include/SDL2
-
-//Path to a library.
-SDL2_IMAGE_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libSDL2_image.so
-
-//Where the SDL2 headers can be found
-SDL2_INCLUDE_DIR:PATH=/usr/include/SDL2
-
-//Where the SDL2 Library can be found
-SDL2_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libSDL2.so
-
-//Disable search SDL2 Library in default path
-SDL2_NO_DEFAULT_PATH:BOOL=OFF
-
-//Custom SDL2 Library path
-SDL2_PATH:STRING=
-
-//Where the SDL2_ttf headers can be found
-SDL2_TTF_INCLUDE_DIR:PATH=/usr/include/SDL2
-
-//Where the SDL2_ttf Library can be found
-SDL2_TTF_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
-
-//Disable search SDL2_ttf Library in default path
-SDL2_TTF_NO_DEFAULT_PATH:BOOL=OFF
-
-//Custom SDL2_ttf Library path
-SDL2_TTF_PATH:STRING=
-
 //Name of the computer/site where compile is being run
 SITE:STRING=nadav-HP-ProBook-450-G2
 
@@ -363,8 +282,11 @@ SLURM_SRUN_COMMAND:FILEPATH=SLURM_SRUN_COMMAND-NOTFOUND
 //Path to a program.
 SVNCOMMAND:FILEPATH=SVNCOMMAND-NOTFOUND
 
-//Dependencies for the target
-player_LIB_DEPENDS:STATIC=general;texture_tools;
+//The directory containing a CMake configuration file for sdl-image.
+sdl-image_DIR:PATH=sdl-image_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for sdl2.
+sdl2_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SDL2
 
 //Value Computed by CMake
 test_BINARY_DIR:STATIC=/home/nadav/Desktop/modern c++/game/build
@@ -459,14 +381,6 @@ CMAKE_GENERATOR_INSTANCE:INTERNAL=
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
-//Test CMAKE_HAVE_LIBC_PTHREAD
-CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=
-//Have library pthreads
-CMAKE_HAVE_PTHREADS_CREATE:INTERNAL=
-//Have library pthread
-CMAKE_HAVE_PTHREAD_CREATE:INTERNAL=1
-//Have include pthread.h
-CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/home/nadav/Desktop/modern c++/game
@@ -536,38 +450,6 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 COVERAGE_COMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: COVERAGE_EXTRA_FLAGS
 COVERAGE_EXTRA_FLAGS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_BINARY_DEB
-CPACK_BINARY_DEB-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_BINARY_FREEBSD
-CPACK_BINARY_FREEBSD-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_BINARY_IFW
-CPACK_BINARY_IFW-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_BINARY_NSIS
-CPACK_BINARY_NSIS-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_BINARY_RPM
-CPACK_BINARY_RPM-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_BINARY_STGZ
-CPACK_BINARY_STGZ-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_BINARY_TBZ2
-CPACK_BINARY_TBZ2-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_BINARY_TGZ
-CPACK_BINARY_TGZ-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_BINARY_TXZ
-CPACK_BINARY_TXZ-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_BINARY_TZ
-CPACK_BINARY_TZ-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_SOURCE_RPM
-CPACK_SOURCE_RPM-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_SOURCE_TBZ2
-CPACK_SOURCE_TBZ2-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_SOURCE_TGZ
-CPACK_SOURCE_TGZ-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_SOURCE_TXZ
-CPACK_SOURCE_TXZ-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_SOURCE_TZ
-CPACK_SOURCE_TZ-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_SOURCE_ZIP
-CPACK_SOURCE_ZIP-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CTEST_SUBMIT_RETRY_COUNT
 CTEST_SUBMIT_RETRY_COUNT-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CTEST_SUBMIT_RETRY_DELAY
@@ -578,14 +460,6 @@ CVSCOMMAND-ADVANCED:INTERNAL=1
 CVS_UPDATE_OPTIONS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DART_TESTING_TIMEOUT
 DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
-//Details about finding SDL2
-FIND_PACKAGE_MESSAGE_DETAILS_SDL2:INTERNAL=[/usr/lib/x86_64-linux-gnu/libSDL2.so][/usr/include/SDL2][v2.0.10()]
-//Details about finding SDL2_image
-FIND_PACKAGE_MESSAGE_DETAILS_SDL2_image:INTERNAL=[/usr/lib/x86_64-linux-gnu/libSDL2_image.so][/usr/include/SDL2][v()]
-//Details about finding SDL2_ttf
-FIND_PACKAGE_MESSAGE_DETAILS_SDL2_ttf:INTERNAL=[/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so][/usr/include/SDL2][v2.0.15()]
-//Details about finding SDL2main
-FIND_PACKAGE_MESSAGE_DETAILS_SDL2main:INTERNAL=[/usr/lib/x86_64-linux-gnu/libSDL2main.a][/usr/include/SDL2][v2.0.10()]
 //ADVANCED property for variable: GITCOMMAND
 GITCOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: HGCOMMAND
@@ -598,28 +472,6 @@ MEMORYCHECK_COMMAND-ADVANCED:INTERNAL=1
 MEMORYCHECK_SUPPRESSIONS_FILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: P4COMMAND
 P4COMMAND-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: SDL2MAIN_LIBRARY
-SDL2MAIN_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: SDL2_IMAGE_INCLUDE_DIR
-SDL2_IMAGE_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: SDL2_IMAGE_LIBRARY
-SDL2_IMAGE_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: SDL2_INCLUDE_DIR
-SDL2_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: SDL2_LIBRARY
-SDL2_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: SDL2_NO_DEFAULT_PATH
-SDL2_NO_DEFAULT_PATH-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: SDL2_PATH
-SDL2_PATH-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: SDL2_TTF_INCLUDE_DIR
-SDL2_TTF_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: SDL2_TTF_LIBRARY
-SDL2_TTF_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: SDL2_TTF_NO_DEFAULT_PATH
-SDL2_TTF_NO_DEFAULT_PATH-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: SDL2_TTF_PATH
-SDL2_TTF_PATH-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SITE
 SITE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SLURM_SBATCH_COMMAND
